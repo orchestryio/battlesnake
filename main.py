@@ -47,10 +47,10 @@ def move(game_state):
     if my_head["y"] + 1 == board_height:
         is_move_safe["up"] = False
 
-    elif my_head["y"] - 1 == board_height:
+    elif my_head["y"] == 0:
         is_move_safe["down"] = False
 
-    elif my_head["x"] - 1 == board_width:
+    elif my_head["x"] == 0:
         is_move_safe["left"] = False
 
     elif my_head["x"] + 1 == board_width:
