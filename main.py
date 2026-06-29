@@ -1,4 +1,3 @@
-
 from random import choice
 
 # Do Not Delete
@@ -45,17 +44,17 @@ def move(game_state):
     board_width = game_state['board']['width']
     board_height = game_state['board']['height']
 
-    if my_head["y"] - 1 == board_height:
+    if my_head["y"] + 1 == board_height:
         is_move_safe["up"] = False
 
-    #elif my_head["y"] + 1 == board_height:
-     #   is_move_safe["down"] = False
+    elif my_head["y"] - 1 == board_height:
+        is_move_safe["down"] = False
 
-    #elif my_head["x"] - 1 == board_width:
-     #   is_move_safe["left"] = False
+    elif my_head["x"] - 1 == board_width:
+        is_move_safe["left"] = False
 
-    #elif my_head["x"] + 1 == board_width:
-     #   is_move_safe["right"] = False
+    elif my_head["x"] + 1 == board_width:
+        is_move_safe["right"] = False
 
     # TODO: Step 2 - Prevent your Battlesnake from colliding with itself
     # my_body = game_state['you']['body']
@@ -88,4 +87,5 @@ if __name__ == "__main__":
     from server import run_server
 
     run_server({"info": info, "start": start, "move": move, "end": end})
+
 
