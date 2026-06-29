@@ -18,13 +18,10 @@ def start(game_state):
 def end(game_state):
     pass
 
-# move is called on every turn and returns your next move
 def move(game_state):
-
     # Valid moves are "up", "down", "left", or "right"
     is_move_safe = {"up": True, "down": True, "left": True, "right": True}
 
-    # We've included code to prevent your Battlesnake from moving backwards
     my_head = game_state["you"]["body"][0]  # Coordinates of your head
     my_neck = game_state["you"]["body"][1]  # Coordinates of your "neck"
 
@@ -40,7 +37,6 @@ def move(game_state):
     elif my_neck["x"] > my_head["x"]:  # Neck is right of head, don't move right
         is_move_safe["right"] = False
 
-    # TODO: Step 1 - Prevent your Battlesnake from moving out of bounds
     board_width = game_state['board']['width']
     board_height = game_state['board']['height']
 
@@ -57,10 +53,34 @@ def move(game_state):
         is_move_safe["right"] = False
 
     # TODO: Step 2 - Prevent your Battlesnake from colliding with itself
-    # my_body = game_state['you']['body']
+    my_body = game_state['you']['body']
+
+    if my_head["y"] + 1 == my_body:
+        is_move_safe["up"] = False
+
+    elif my_head["y"] - 1 == my_body:
+        is_move_safe["down"] = False
+
+    elif my_head["x"] + 1 == my_body:
+        is_move_safe["left"] = False
+
+    elif my_head["x"] - 1 == my_body:
+        is_move_safe["right"] = False
 
     # TODO: Step 3 - Prevent your Battlesnake from colliding with other Battlesnakes
-    # opponents = game_state['board']['snakes']
+    opponents = game_state['board']['snakes']
+
+    if my_head["y"] + 1 == opponents:
+        is_move_safe["up"] = False
+
+    elif my_head["y"] - 1 == opponents:
+        is_move_safe["down"] = False
+
+    elif my_head["x"] + 1 == opponents:
+        is_move_safe["left"] = False
+
+    elif my_head["x"] - 1 == opponents:
+        is_move_safe["right"] = False
 
     # Are there any safe moves left?
     safe_moves = []
@@ -81,11 +101,8 @@ def move(game_state):
     print(f"MOVE {game_state['turn']}: {next_move}")
     return {"move": next_move}
 
-
 # Start server when `python main.py` is run
 if __name__ == "__main__":
     from server import run_server
 
     run_server({"info": info, "start": start, "move": move, "end": end})
-
-
