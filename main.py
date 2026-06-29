@@ -28,13 +28,13 @@ def move(game_state):
     if my_neck["y"] > my_head["y"]:  # Neck is above head, don't move up
         is_move_safe["up"] = False
 
-    elif my_neck["y"] < my_head["y"]:  # Neck is below head, don't move down
+    if my_neck["y"] < my_head["y"]:  # Neck is below head, don't move down
         is_move_safe["down"] = False
 
-    elif my_neck["x"] < my_head["x"]:  # Neck is left of head, don't move left
+    if my_neck["x"] < my_head["x"]:  # Neck is left of head, don't move left
         is_move_safe["left"] = False
 
-    elif my_neck["x"] > my_head["x"]:  # Neck is right of head, don't move right
+    if my_neck["x"] > my_head["x"]:  # Neck is right of head, don't move right
         is_move_safe["right"] = False
 
     board_width = game_state['board']['width']
@@ -43,13 +43,13 @@ def move(game_state):
     if my_head["y"] + 1 == board_height:
         is_move_safe["up"] = False
 
-    elif my_head["y"] == 0:
+    if my_head["y"] == 0:
         is_move_safe["down"] = False
 
-    elif my_head["x"] == 0:
+    if my_head["x"] == 0:
         is_move_safe["left"] = False
 
-    elif my_head["x"] + 1 == board_width:
+    if my_head["x"] + 1 == board_width:
         is_move_safe["right"] = False
 
     # TODO: Step 2 - Prevent your Battlesnake from colliding with itself
@@ -58,13 +58,13 @@ def move(game_state):
     if my_head["y"] + 1 == my_body:
         is_move_safe["up"] = False
 
-    elif my_head["y"] - 1 == my_body:
+    if my_head["y"] - 1 == my_body:
         is_move_safe["down"] = False
 
-    elif my_head["x"] + 1 == my_body:
+    if my_head["x"] + 1 == my_body:
         is_move_safe["left"] = False
 
-    elif my_head["x"] - 1 == my_body:
+    if my_head["x"] - 1 == my_body:
         is_move_safe["right"] = False
 
     # TODO: Step 3 - Prevent your Battlesnake from colliding with other Battlesnakes
@@ -73,13 +73,13 @@ def move(game_state):
     if my_head["y"] + 1 == opponents:
         is_move_safe["up"] = False
 
-    elif my_head["y"] - 1 == opponents:
+    if my_head["y"] - 1 == opponents:
         is_move_safe["down"] = False
 
-    elif my_head["x"] + 1 == opponents:
+    if my_head["x"] + 1 == opponents:
         is_move_safe["left"] = False
 
-    elif my_head["x"] - 1 == opponents:
+    if my_head["x"] - 1 == opponents:
         is_move_safe["right"] = False
 
     # Are there any safe moves left?
