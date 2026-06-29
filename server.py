@@ -1,12 +1,9 @@
 import logging
 import os
-import typing
 
-from flask import Flask
-from flask import request
+from flask import Flask, request
 
-
-def run_server(handlers: typing.Dict):
+def run_server(handlers):
     app = Flask("Battlesnake")
 
     @app.get("/")
