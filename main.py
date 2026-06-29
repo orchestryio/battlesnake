@@ -45,16 +45,16 @@ def move(game_state):
     board_width = game_state['board']['width']
     board_height = game_state['board']['height']
 
-    if board_width - 1 == my_head["x"]:
+    if my_head["y"] - 1 == board_height:
         is_move_safe["up"] = False
 
-    #elif board_width > my_head["x"]:
+    #elif my_head["y"] + 1 == board_height:
      #   is_move_safe["down"] = False
 
-    #elif board_width > my_head["x"]:
+    #elif my_head["x"] - 1 == board_width:
      #   is_move_safe["left"] = False
 
-    #elif board_width > my_head["x"]:
+    #elif my_head["x"] + 1 == board_width:
      #   is_move_safe["right"] = False
 
     # TODO: Step 2 - Prevent your Battlesnake from colliding with itself
